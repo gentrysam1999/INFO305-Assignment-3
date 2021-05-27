@@ -25,5 +25,7 @@ public class ValueSetter : MonoBehaviour
     public void SetWeight()
     {
         float sliderValue = weightSlider.GetComponent<PinchSlider>().SliderValue;
+        int weightToAdd = (int)Math.Round(sliderValue * 50);
+        weight = 50 + (weightToAdd);
     }
 }
