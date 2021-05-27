@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Microsoft.MixedReality.Toolkit.UI;
+using System;
 
 public class ValueSetter : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class ValueSetter : MonoBehaviour
     public void SetHeight()
     {
         float sliderValue = heightSlider.GetComponent<PinchSlider>().SliderValue;
+        int heightToAdd = (int) Math.Round(sliderValue * 50);
+        height = 150 +  (heightToAdd);
 
     }
 
