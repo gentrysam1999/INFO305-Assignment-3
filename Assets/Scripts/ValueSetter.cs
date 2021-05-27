@@ -28,5 +28,6 @@ public class ValueSetter : MonoBehaviour
         float sliderValue = weightSlider.GetComponent<PinchSlider>().SliderValue;
         int weightToAdd = (int)Math.Round(sliderValue * 50);
         weight = 50 + (weightToAdd);
+        weightText.GetComponent<TextMesh>().text = ("Weight: " + weight + "kg");
     }
 }
