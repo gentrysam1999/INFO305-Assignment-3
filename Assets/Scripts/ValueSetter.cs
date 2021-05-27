@@ -19,6 +19,7 @@ public class ValueSetter : MonoBehaviour
         float sliderValue = heightSlider.GetComponent<PinchSlider>().SliderValue;
         int heightToAdd = (int) Math.Round(sliderValue * 50);
         height = 150 +  (heightToAdd);
+        heightText.GetComponent<TextMesh>().text = ("Height: " + height +"cm");
 
     }
 
