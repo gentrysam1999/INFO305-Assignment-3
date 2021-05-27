@@ -525,6 +525,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &888344802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7307063430618434862, guid: 1093263a89abe47499cccf7dcb08effb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1674680460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,8 +772,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heightText: {fileID: 156157326}
   heightSlider: {fileID: 1482684276}
-  weightText: {fileID: 0}
-  weightSlider: {fileID: 0}
+  weightText: {fileID: 1579208259}
+  weightSlider: {fileID: 888344802}
   height: 150
   weight: 50
 --- !u!4 &1131248543
@@ -843,6 +849,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7307063430618434851, guid: 1093263a89abe47499cccf7dcb08effb,
     type: 3}
   m_PrefabInstance: {fileID: 730217626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1579208259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013198843976, guid: 2d145caa42b44bd42aac79a42eba3d7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 824741508}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1674680460
 PrefabInstance:
