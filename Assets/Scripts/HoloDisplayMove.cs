@@ -209,7 +209,7 @@ public class HoloDisplayMove : MonoBehaviour
                 }else{
                     movement = this.gameObject.GetComponent<MoveThreshCheck>().findMovement(dispValues[i], poseCount);
                     
-                    Debug.Log(movement);
+                    //Debug.Log(movement);
                     if(textObj != null)
                     {
                         textObj.GetComponent<TextMesh>().text = (movement);
