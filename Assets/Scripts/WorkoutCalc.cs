@@ -5,8 +5,8 @@ using UnityEngine;
 public class WorkoutCalc : MonoBehaviour
 {
     public GameObject MainCam;
-    private int weight = 60;
-    private int height = 172;
+    public int weight = 60;
+    public int height = 172;
     private float startTime = 0.0f;
     public float time;
     private int count = 0;

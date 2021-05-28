@@ -20,7 +20,6 @@ public class ValueSetter : MonoBehaviour
         int heightToAdd = (int) Math.Round(sliderValue * 50);
         height = 150 +  (heightToAdd);
         heightText.GetComponent<TextMesh>().text = ("Height: " + height +"cm");
-
     }
 
     public void SetWeight()

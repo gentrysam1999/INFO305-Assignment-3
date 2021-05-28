@@ -14,16 +14,8 @@ public class GlobalControl : MonoBehaviour
     public GameObject homeObj;
     public GameObject navObj;
     public GameObject openWorkout;
-    void Start()
-    {
-        
-    }
+    public GameObject schedWorkout;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void saveSettings(){
         //GameObject settingsObj = GameObject.Find("SetValues");
         height = settingsObj.GetComponent<ValueSetter>().height;
@@ -39,12 +31,20 @@ public class GlobalControl : MonoBehaviour
 
     public void openHome(){
         homeObj.SetActive(true);
+        navObj.SetActive(false);
     }
 
     public void startOpenWorkout(){
+        openWorkout.GetComponent<WorkoutCalc>().height = height;
+        openWorkout.GetComponent<WorkoutCalc>().weight = weight;
         homeObj.SetActive(false);
         openWorkout.SetActive(true);
         navObj.SetActive(true);
+    }
+    public void stopOpenWorkout(){
+        //just temp for now
+        openWorkout.SetActive(false);
+        
     }
     public void startSchedWorkout(){
 
