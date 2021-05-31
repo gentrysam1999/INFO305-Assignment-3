@@ -18,6 +18,15 @@ public class GlobalControl : MonoBehaviour
     public GameObject openWorkout;
     public GameObject schedWorkout;
   
+    void Start(){
+        homeObj.SetActive(true);
+        settingsObj.SetActive(true);
+        menuObj.SetActive(false);
+        navObj.SetActive(false);
+        openWorkout.SetActive(false);
+        schedWorkout.SetActive(false);
+        
+    }
 
     public void saveSettings(){
         //GameObject settingsObj = GameObject.Find("SetValues");

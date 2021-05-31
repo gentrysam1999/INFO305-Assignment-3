@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &192171484
 Transform:
   m_ObjectHideFlags: 0
@@ -298,6 +298,7 @@ MonoBehaviour:
   movement: 
   caloriesLost: 0
   caloriesLostSlow: 0
+  times: []
 --- !u!1001 &195567226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -536,6 +537,7 @@ MonoBehaviour:
   movement: 
   caloriesLost: 0
   caloriesLostSlow: 0
+  times: []
 --- !u!1 &487626069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,6 +2282,7 @@ MonoBehaviour:
   weight: 0
   gender: 
   age: 0
+  time: 0
   settingsObj: {fileID: 1131248541}
   menuObj: {fileID: 1176072355}
   homeObj: {fileID: 1354990016}
