@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class WorkoutCalc : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class WorkoutCalc : MonoBehaviour
     private string prevMovement;
     public float caloriesLost;
     public float caloriesLostSlow;
+    public List<float> times;
+   
 
 
     // Start is called before the first frame update
@@ -38,9 +41,20 @@ public class WorkoutCalc : MonoBehaviour
             caloriesLostSlow += calorieCalc(prevMovement, weight, time);
             count = 0;
         }
+        Debug.Log(recordTime(time));
         prevMovement = movement;
         
     }
+
+    public float recordTime(float time)
+    {
+        times = new List<float>();
+        times.Add(time);
+
+        return times.Max();
+
+    }
+
     public float calorieCalc(string activity, int weight, float time){
         float met = 0.0f;
         if (activity == "Jogging"){

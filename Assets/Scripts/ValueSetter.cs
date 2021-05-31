@@ -16,6 +16,7 @@ public class ValueSetter : MonoBehaviour
     public int weight = 50;
     public float bMI = 0;
 
+
     public void SetHeight()
     {
         float sliderValue = heightSlider.GetComponent<PinchSlider>().SliderValue;

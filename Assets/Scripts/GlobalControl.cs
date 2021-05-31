@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class GlobalControl : MonoBehaviour
@@ -9,12 +10,14 @@ public class GlobalControl : MonoBehaviour
     public int weight;
     public string gender;
     public int age;
+    public float time;
     public GameObject settingsObj;
     public GameObject menuObj;
     public GameObject homeObj;
     public GameObject navObj;
     public GameObject openWorkout;
     public GameObject schedWorkout;
+  
 
     public void saveSettings(){
         //GameObject settingsObj = GameObject.Find("SetValues");
@@ -53,5 +56,7 @@ public class GlobalControl : MonoBehaviour
         schedWorkout.SetActive(true);
         navObj.SetActive(true);
     }
+
+
 
 }
