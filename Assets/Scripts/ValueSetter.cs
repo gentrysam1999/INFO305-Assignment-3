@@ -16,7 +16,14 @@ public class ValueSetter : MonoBehaviour
     public int weight = 50;
     public float bMI = 0;
 
-
+    public void Start()
+    {
+        GameObject glob = GameObject.Find("GlobalObj");
+        int height = glob.GetComponent<GlobalControl>().height;
+        int weight = glob.GetComponent<GlobalControl>().weight;
+        heightSlider.GetComponent<PinchSlider>().SliderValue = ((float)height-150)/50;
+        weightSlider.GetComponent<PinchSlider>().SliderValue = ((float)weight-30)/90;
+    }
     public void SetHeight()
     {
         float sliderValue = heightSlider.GetComponent<PinchSlider>().SliderValue;
@@ -38,9 +45,9 @@ public class ValueSetter : MonoBehaviour
     public void SetBMI()
     {
         float heightAdj = (float)height/100;
-        Debug.Log(heightAdj);
+        //Debug.Log(heightAdj);
         //Debug.Log(weight);
-        Debug.Log(weight/(heightAdj*heightAdj));
+        //Debug.Log(weight/(heightAdj*heightAdj));
         bMI = ((float)weight/(heightAdj*heightAdj));
         
         bMIText.GetComponent<TextMesh>().text = ("BMI: " + Math.Round(bMI, 1));
