@@ -40,8 +40,9 @@ public class WorkoutCalc : MonoBehaviour
         }else{
             caloriesLostSlow += calorieCalc(prevMovement, weight, time);
             count = 0;
+            Debug.Log(recordTime(time));
         }
-        Debug.Log(recordTime(time));
+        
         prevMovement = movement;
         
     }
