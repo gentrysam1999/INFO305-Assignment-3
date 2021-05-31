@@ -418,7 +418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &233847566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1721,7 +1721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1354990017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,7 +2285,7 @@ MonoBehaviour:
   homeObj: {fileID: 1354990016}
   navObj: {fileID: 233847565}
   openWorkout: {fileID: 419952674}
-  schedWorkout: {fileID: 0}
+  schedWorkout: {fileID: 192171483}
 --- !u!4 &1826345059
 Transform:
   m_ObjectHideFlags: 0

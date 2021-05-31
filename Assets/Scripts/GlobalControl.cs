@@ -44,10 +44,14 @@ public class GlobalControl : MonoBehaviour
     public void stopOpenWorkout(){
         //just temp for now
         openWorkout.SetActive(false);
-        
+        schedWorkout.SetActive(false);
     }
     public void startSchedWorkout(){
-
+        schedWorkout.GetComponent<WorkoutCalc>().height = height;
+        schedWorkout.GetComponent<WorkoutCalc>().weight = weight;
+        homeObj.SetActive(false);
+        schedWorkout.SetActive(true);
+        navObj.SetActive(true);
     }
 
 }
