@@ -26,7 +26,7 @@ public class MoveThreshCheck : MonoBehaviour
     public int squatCount = 0;
 
     private string moveString;
-
+    public int moveNum;
     private int moveCount = 0;
 
     
@@ -116,6 +116,7 @@ public class MoveThreshCheck : MonoBehaviour
                 return moveString;
             }else{
                 moveString = "Standing Still";
+                moveNum = 1;
                 threshTruthCheck +=("1, 0, 0, 0\n");
                 moveCount = 0;
                 return moveString;  
@@ -125,6 +126,7 @@ public class MoveThreshCheck : MonoBehaviour
         {
             squatCount = 0;
             moveString = "Jogging";
+            moveNum = 3;
             threshTruthCheck +=("0, 0, 1, 0\n");
             moveCount = 0;
             return moveString;
@@ -141,6 +143,7 @@ public class MoveThreshCheck : MonoBehaviour
         {
             squatCount = 0;   
             moveString = "Walking";
+            moveNum = 2;
             threshTruthCheck +=("0, 1, 0, 0\n");
             return moveString; 
         }
@@ -155,6 +158,7 @@ public class MoveThreshCheck : MonoBehaviour
                 squatDown = false;
             }
             moveString = "Squats: " + squatCount;
+            moveNum = 4;
             threshTruthCheck +=("0, 0, 0, 1\n");
             moveCount = 0;
             return moveString;
