@@ -157,7 +157,8 @@ public class MoveThreshCheck : MonoBehaviour
             }else{
                 squatDown = false;
             }
-            moveString = "Squats: " + squatCount;
+            //moveString = "Squats: " + squatCount;
+            moveString = "Squats";
             moveNum = 4;
             threshTruthCheck +=("0, 0, 0, 1\n");
             moveCount = 0;

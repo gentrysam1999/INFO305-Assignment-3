@@ -8,13 +8,17 @@ public class GameData
     public int height;
     public int weight;
     public float runRecord;
-    public int squatRecord;
+    public float squatRecord;
+    public float walkRecord;
+    public float stillRecord;
 
-    public GameData(int heightInt, int weightInt, float runRecordF, int squatRecordInt)
+    public GameData(int heightInt, int weightInt, float runRecordF, float squatRecordF, float walkRecordF, float stillRecordF)
     {
         height = heightInt;
         weight = weightInt;
         runRecord = runRecordF;
-        squatRecord = squatRecordInt;
+        squatRecord = squatRecordF;
+        walkRecord = walkRecordF;
+        stillRecord = stillRecordF;
     }
 }

@@ -16,6 +16,7 @@ public class WorkoutCalc : MonoBehaviour
     public float caloriesLost;
     public float caloriesLostSlow;
     public List<float> times;
+    public bool isRecord = false;
    
 
 
@@ -37,16 +38,53 @@ public class WorkoutCalc : MonoBehaviour
             } 
             caloriesLost += calorieCalc(movement, weight, Time.deltaTime);
             count+=1;
+            if(CheckRecordTime(movement, time)){
+                //Do something to let user know that they have achieved a new record
+                Debug.Log("new record!");
+            }
+            // else{
+            //     isRecord = false;
+            // }
         }else{
             caloriesLostSlow += calorieCalc(prevMovement, weight, time);
             count = 0;
-            Debug.Log(recordTime(time));
+            if(isRecord){
+                Debug.Log("new record: /n" + movement + " " + time);
+                isRecord = false;
+            }
+            //Debug.Log(recordTime(time));
         }
         
         prevMovement = movement;
         
     }
 
+    public bool CheckRecordTime(string activity, float time){
+        GameObject globObj = GameObject.Find("GlobalObj");
+        if (activity == "Jogging"){
+            if(time > globObj.GetComponent<GlobalControl>().runRecord){
+                isRecord = true;
+                globObj.GetComponent<GlobalControl>().runRecord = time;
+            }
+        }else if(activity == "Squats"){
+            if(time > globObj.GetComponent<GlobalControl>().squatRecord){
+                isRecord = true;
+                globObj.GetComponent<GlobalControl>().squatRecord = time;
+            }
+        }else if(activity == "Walking"){
+            if(time > globObj.GetComponent<GlobalControl>().walkRecord){
+                isRecord = true;
+                globObj.GetComponent<GlobalControl>().walkRecord = time;
+            }
+        }
+        else if(activity == "Standing Still"){
+            if(time > globObj.GetComponent<GlobalControl>().stillRecord){
+                isRecord = true;
+                globObj.GetComponent<GlobalControl>().stillRecord = time;
+            }
+        }
+        return isRecord;
+    }
     public float recordTime(float time)
     {
         times = new List<float>();

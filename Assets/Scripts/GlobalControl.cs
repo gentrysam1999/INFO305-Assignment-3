@@ -10,7 +10,9 @@ public class GlobalControl : MonoBehaviour
     public int height = 172;
     public int weight = 60;
     public float runRecord = 39.1276538f;
-    public int squatRecord = 30;
+    public float squatRecord = 30.0f;
+    public float walkRecord = 10.0f;
+    public float stillRecord = 10.0f;
     public string gender;
     public int age;
     public float time;
@@ -38,7 +40,7 @@ public class GlobalControl : MonoBehaviour
         if(File.Exists(destination)) file = File.OpenWrite(destination);
         else file = File.Create(destination);
 
-        GameData data = new GameData(height, weight, runRecord, squatRecord);
+        GameData data = new GameData(height, weight, runRecord, squatRecord, walkRecord, stillRecord);
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();
@@ -50,7 +52,7 @@ public class GlobalControl : MonoBehaviour
         if(File.Exists(destination)) file = File.OpenRead(destination);
         else
         {
-            Debug.LogError("File not found");
+            //Debug.LogError("File not found");
             return;
         }
 
@@ -62,11 +64,15 @@ public class GlobalControl : MonoBehaviour
         weight = data.weight;
         runRecord = data.runRecord;
         squatRecord = data.squatRecord;
+        walkRecord = data.walkRecord;
+        stillRecord = data.stillRecord;
 
         Debug.Log(data.height);
         Debug.Log(data.weight);
         Debug.Log(data.runRecord);
         Debug.Log(data.squatRecord);
+        Debug.Log(data.walkRecord);
+        Debug.Log(data.stillRecord);
     }
 
     public void saveSettings(){
