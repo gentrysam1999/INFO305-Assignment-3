@@ -12,24 +12,32 @@ public class WorkoutCalc : MonoBehaviour
     public float time;
     private int count = 0;
     public string movement;
+    public float speed;
+    public float squats;
+    public float distance;
     private string prevMovement;
     public float caloriesLost;
     public float caloriesLostSlow;
     public List<float> times;
-    public bool isRecord = false;
+    public bool isTimeRecord = false;
+    public bool isAmountRecord = false;
+    public bool isDistanceRecord = false;
+
    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        prevMovement = MainCam.GetComponent<HoloDisplayMove>().movement;
+        prevMovement = MainCam.GetComponent<MoveThreshCheck>().moveString;
     }
 
     // Update is called once per frame
     void Update()
     {
-        movement = MainCam.GetComponent<HoloDisplayMove>().movement;
+        movement = MainCam.GetComponent<MoveThreshCheck>().moveString;
+        speed = 40 * MainCam.GetComponent<MoveThreshCheck>().zPos; //Zpos is forward distance in 0.025 secs, 0.025*40 = 1 second
+        squats = MainCam.GetComponent<MoveThreshCheck>().squatCount;
         if (prevMovement == movement){
             if (count == 0){
                 time = startTime;
@@ -38,20 +46,54 @@ public class WorkoutCalc : MonoBehaviour
             } 
             caloriesLost += calorieCalc(movement, weight, Time.deltaTime);
             count+=1;
-            if(CheckRecordTime(movement, time)){
-                //Do something to let user know that they have achieved a new record
-                Debug.Log("new record!");
+            CheckRecordTime(movement, time);
+            if(movement == "Jogging"){
+                CheckRecordAmount(movement, speed);
+                CheckRecordDistance(movement, distance);
+                distance += MainCam.GetComponent<MoveThreshCheck>().zPos;
             }
-            // else{
-            //     isRecord = false;
-            // }
+            if(movement == "Squats"){
+                CheckRecordAmount(movement, squats);
+            }
+            CheckRecordDistance(movement, time);
+
+            if(isTimeRecord){
+                //Do something to let user know that they are achieving a new record e.g. "Keep Going"
+                Debug.Log("new time record!");
+            }
+            if(isAmountRecord){
+                //Do something to let user know that they are achieving a new record e.g. "Keep Going"
+                Debug.Log("new amount record!");
+            }
+            if(isDistanceRecord){
+                //Do something to let user know that they are achieving a new record e.g. "Keep Going"
+                Debug.Log("new distance record!");
+            }
         }else{
             caloriesLostSlow += calorieCalc(prevMovement, weight, time);
             count = 0;
-            if(isRecord){
-                Debug.Log("new record: /n" + movement + " " + time);
-                isRecord = false;
+            if(isTimeRecord){
+                //set record
+                Debug.Log("new record: /n" + prevMovement + " " + time);
+                isTimeRecord = false;
             }
+            if(isAmountRecord && prevMovement == "Squats"){
+                //set record
+                Debug.Log("new record: /n" + prevMovement + " " + (int)squats);
+                squats = 0.0f;
+                isAmountRecord = false;
+            }else if(isAmountRecord && prevMovement == "Joggin"){
+                //set record
+                Debug.Log("new record: /n" + prevMovement + " " + speed);
+                isAmountRecord = false;
+            }
+            if(isDistanceRecord){
+                //set record
+                Debug.Log("new record: /n" + prevMovement + " " + distance);
+                distance = 0.0f;
+                isDistanceRecord = false;
+            }
+            
             //Debug.Log(recordTime(time));
         }
         
@@ -59,32 +101,55 @@ public class WorkoutCalc : MonoBehaviour
         
     }
 
-    public bool CheckRecordTime(string activity, float time){
+    public void CheckRecordTime(string activity, float time){
         GameObject globObj = GameObject.Find("GlobalObj");
         if (activity == "Jogging"){
             if(time > globObj.GetComponent<GlobalControl>().runRecord){
-                isRecord = true;
+                isTimeRecord = true;
                 globObj.GetComponent<GlobalControl>().runRecord = time;
             }
         }else if(activity == "Squats"){
             if(time > globObj.GetComponent<GlobalControl>().squatRecord){
-                isRecord = true;
+                isTimeRecord = true;
                 globObj.GetComponent<GlobalControl>().squatRecord = time;
             }
         }else if(activity == "Walking"){
             if(time > globObj.GetComponent<GlobalControl>().walkRecord){
-                isRecord = true;
+                isTimeRecord = true;
                 globObj.GetComponent<GlobalControl>().walkRecord = time;
             }
         }
         else if(activity == "Standing Still"){
             if(time > globObj.GetComponent<GlobalControl>().stillRecord){
-                isRecord = true;
+                isTimeRecord = true;
                 globObj.GetComponent<GlobalControl>().stillRecord = time;
             }
         }
-        return isRecord;
     }
+    public void CheckRecordAmount(string activity, float value){
+        GameObject globObj = GameObject.Find("GlobalObj");
+        if (activity == "Jogging"){
+            if(value > globObj.GetComponent<GlobalControl>().runSpeedRecord){
+                isAmountRecord = true;
+                globObj.GetComponent<GlobalControl>().runSpeedRecord = value;
+            }
+        }else if(activity == "Squats"){
+            if(value > globObj.GetComponent<GlobalControl>().squatMaxRecord){
+                isAmountRecord = true;
+                globObj.GetComponent<GlobalControl>().squatMaxRecord = value;
+            }
+        }
+    }
+    public void CheckRecordDistance(string activity, float value){
+        GameObject globObj = GameObject.Find("GlobalObj");
+        if (activity == "Jogging"){
+            if(value > globObj.GetComponent<GlobalControl>().runDistanceRecord){
+                isDistanceRecord = true;
+                globObj.GetComponent<GlobalControl>().runDistanceRecord = value;
+            }
+        }
+    }
+
     public float recordTime(float time)
     {
         times = new List<float>();

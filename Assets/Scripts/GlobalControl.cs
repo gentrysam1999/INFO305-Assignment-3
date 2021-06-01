@@ -10,7 +10,10 @@ public class GlobalControl : MonoBehaviour
     public int height = 172;
     public int weight = 60;
     public float runRecord = 39.1276538f;
+    public float runSpeedRecord = 0.0f; // meters per second
+    public float runDistanceRecord = 0.0f; // meters
     public float squatRecord = 30.0f;
+    public float squatMaxRecord = 0.0f; // amount of squats
     public float walkRecord = 10.0f;
     public float stillRecord = 10.0f;
     public string gender;
@@ -40,7 +43,7 @@ public class GlobalControl : MonoBehaviour
         if(File.Exists(destination)) file = File.OpenWrite(destination);
         else file = File.Create(destination);
 
-        GameData data = new GameData(height, weight, runRecord, squatRecord, walkRecord, stillRecord);
+        GameData data = new GameData(height, weight, runRecord, runSpeedRecord, runDistanceRecord, squatRecord, squatMaxRecord, walkRecord, stillRecord);
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
         file.Close();
@@ -53,6 +56,7 @@ public class GlobalControl : MonoBehaviour
         else
         {
             //Debug.LogError("File not found");
+            saveApp();
             return;
         }
 
@@ -63,14 +67,20 @@ public class GlobalControl : MonoBehaviour
         height = data.height;
         weight = data.weight;
         runRecord = data.runRecord;
+        runSpeedRecord = data.runSpeedRecord;
+        runDistanceRecord = data.runDistanceRecord;
         squatRecord = data.squatRecord;
+        squatMaxRecord = data.squatMaxRecord;
         walkRecord = data.walkRecord;
         stillRecord = data.stillRecord;
 
         Debug.Log(data.height);
         Debug.Log(data.weight);
         Debug.Log(data.runRecord);
+        Debug.Log(data.runSpeedRecord);
+        Debug.Log(data.runDistanceRecord);
         Debug.Log(data.squatRecord);
+        Debug.Log(data.squatMaxRecord);
         Debug.Log(data.walkRecord);
         Debug.Log(data.stillRecord);
     }
@@ -87,7 +97,6 @@ public class GlobalControl : MonoBehaviour
         menuObj.SetActive(false);
         settingsObj.SetActive(true);
     }
-
     public void openHome(){
         homeObj.SetActive(true);
         navObj.SetActive(false);

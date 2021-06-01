@@ -296,9 +296,15 @@ MonoBehaviour:
   height: 172
   time: 0
   movement: 
+  speed: 0
+  squats: 0
+  distance: 0
   caloriesLost: 0
   caloriesLostSlow: 0
   times: []
+  isTimeRecord: 0
+  isAmountRecord: 0
+  isDistanceRecord: 0
 --- !u!1001 &195567226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -509,7 +515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &419952675
 Transform:
   m_ObjectHideFlags: 0
@@ -541,9 +547,15 @@ MonoBehaviour:
   height: 172
   time: 0
   movement: 
+  speed: 0
+  squats: 0
+  distance: 0
   caloriesLost: 0
   caloriesLostSlow: 0
   times: []
+  isTimeRecord: 0
+  isAmountRecord: 0
+  isDistanceRecord: 0
 --- !u!1 &487626069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1179,9 @@ MonoBehaviour:
   yRot: 0
   zRot: 0
   squatCount: 0
+  moveString: 
+  amount: 0
+  distance: 0
   moveNum: 0
 --- !u!114 &963194231
 MonoBehaviour:
@@ -1822,7 +1837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1354990017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,7 +2395,12 @@ MonoBehaviour:
   height: 0
   weight: 0
   runRecord: 0
+  runSpeedRecord: 0
+  runDistanceRecord: 0
   squatRecord: 0
+  squatMaxRecord: 0
+  walkRecord: 0
+  stillRecord: 0
   gender: 
   age: 0
   time: 0

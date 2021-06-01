@@ -25,7 +25,9 @@ public class MoveThreshCheck : MonoBehaviour
     private bool squatDown;
     public int squatCount = 0;
 
-    private string moveString;
+    public string moveString;
+    public float amount;
+    public float distance;
     public int moveNum;
     private int moveCount = 0;
 
