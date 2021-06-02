@@ -26,6 +26,8 @@ public class WorkoutCalc : MonoBehaviour
     public GameObject timeText;
     public GameObject calorieText;
     public GameObject workoutTimeText;
+    public GameObject headsetTextObj;
+    private string headsetText;
 
    
 
@@ -40,6 +42,7 @@ public class WorkoutCalc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        headsetText = "";
         if(this.gameObject.activeSelf){
             totalTime += Time.deltaTime;
         }else{
@@ -71,14 +74,17 @@ public class WorkoutCalc : MonoBehaviour
             if(isTimeRecord){
                 //Do something to let user know that they are achieving a new record e.g. "Keep Going"
                 Debug.Log("new time record!");
+                headsetText += ("New " + prevMovement + " Time Keep Going!/n");
             }
             if(isAmountRecord){
                 //Do something to let user know that they are achieving a new record e.g. "Keep Going"
                 Debug.Log("new amount record!");
+                headsetText += ("New " + prevMovement + " Max Keep Going!/n");
             }
             if(isDistanceRecord){
                 //Do something to let user know that they are achieving a new record e.g. "Keep Going"
                 Debug.Log("new distance record!");
+                headsetText += ("New " + prevMovement + " Distance Keep Going!/n");
             }
         }else{
             caloriesLostSlow += calorieCalc(prevMovement, weight, time);
@@ -110,6 +116,7 @@ public class WorkoutCalc : MonoBehaviour
         timeText.GetComponent<TextMesh>().text = totalTime.ToString("0.000");
         calorieText.GetComponent<TextMesh>().text = caloriesLost.ToString("0.00");
         workoutTimeText.GetComponent<TextMesh>().text = time.ToString("0.000");
+        headsetTextObj.GetComponent<TextMesh>().text = headsetText;
         prevMovement = movement;
         
     }
