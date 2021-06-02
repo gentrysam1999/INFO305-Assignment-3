@@ -114,6 +114,8 @@ public class WorkoutCalc : MonoBehaviour
                 //set record
                 Debug.Log("new record: /n" + prevMovement + " " + speed);
                 isAmountRecord = false;
+            }else{
+                isAmountRecord = false;
             }
             if(isDistanceRecord){
                 //set record
