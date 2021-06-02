@@ -23,6 +23,7 @@ public class GlobalControl : MonoBehaviour
     public GameObject menuObj;
     public GameObject recordsObj;
     public GameObject homeObj;
+    public GameObject summaryObj;
     public GameObject navObj;
     public GameObject statsObj;
     public GameObject openWorkout;
@@ -30,6 +31,7 @@ public class GlobalControl : MonoBehaviour
     public GameObject stopButton;
     public GameObject startButton;
     public GameObject recordsText;
+    public GameObject summaryText;
   
     void Awake(){
         //saveApp();
@@ -43,6 +45,7 @@ public class GlobalControl : MonoBehaviour
         openWorkout.SetActive(false);
         schedWorkout.SetActive(false);
         recordsObj.SetActive(false);
+        summaryObj.SetActive(false);
         
     }
     public void saveApp(){
@@ -110,16 +113,30 @@ public class GlobalControl : MonoBehaviour
         menuObj.SetActive(false);
         settingsObj.SetActive(true);
     }
+    public void leaveWorkout()
+    {
+        homeObj.SetActive(true);
+        summaryObj.SetActive(true);
+        menuObj.SetActive(false);
+        openWorkout.SetActive(false);
+        schedWorkout.SetActive(false);
+        navObj.SetActive(false);
+        recordsObj.SetActive(false);
+        summaryText.GetComponent<TextMesh>().text = "Total Calories Lost = " + openWorkout.GetComponent<WorkoutCalc>().caloriesLost.ToString("0.00") + " (kcal)";
+        summaryText.GetComponent<TextMesh>().text += "\nTotal Workout Time = " + (openWorkout.GetComponent<WorkoutCalc>().totalTime/60).ToString("0.00") + " (minutes)";
+        summaryText.GetComponent<TextMesh>().text += "\nTotal Distance Travelled = " + openWorkout.GetComponent<WorkoutCalc>().totalDistance.ToString("0.00")+ " (meters)";
+    }
     public void openHome(){
         homeObj.SetActive(true);
         menuObj.SetActive(true);
+        summaryObj.SetActive(false);
         openWorkout.SetActive(false);
         schedWorkout.SetActive(false);
         navObj.SetActive(false);
         recordsObj.SetActive(false);
         openWorkout.GetComponent<WorkoutCalc>().totalTime = 0.0f;
         openWorkout.GetComponent<WorkoutCalc>().caloriesLost = 0.0f;
-        openWorkout.GetComponent<WorkoutCalc>().distance = 0.0f;
+        openWorkout.GetComponent<WorkoutCalc>().totalDistance = 0.0f;
     }
     public void openStats(){
         if(statsObj.activeSelf){
@@ -138,8 +155,8 @@ public class GlobalControl : MonoBehaviour
         recordsText.GetComponent<TextMesh>().text += "\nRun Distance Record: " + runDistanceRecord.ToString("0.00") + "meters";
         recordsText.GetComponent<TextMesh>().text += "\nSquat Time Record: " + squatRecord.ToString("0.00") + "secs";
         recordsText.GetComponent<TextMesh>().text += "\nSquat Max Record: " + squatMaxRecord.ToString("0");
-        recordsText.GetComponent<TextMesh>().text += "\nWalk Time Record: " + walkRecord.ToString("0.00") + "secs";
-        recordsText.GetComponent<TextMesh>().text += "\nStill Time Record: " + stillRecord.ToString("0.00") + "secs";
+        //recordsText.GetComponent<TextMesh>().text += "\nWalk Time Record: " + walkRecord.ToString("0.00") + "secs";
+        //recordsText.GetComponent<TextMesh>().text += "\nStill Time Record: " + stillRecord.ToString("0.00") + "secs";
     }
 
     public void startOpenWorkout(){

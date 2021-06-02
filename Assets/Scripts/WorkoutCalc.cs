@@ -16,6 +16,7 @@ public class WorkoutCalc : MonoBehaviour
     public float speed;
     public float squats;
     public float distance;
+    public float totalDistance;
     private string prevMovement;
     public float caloriesLost;
     public float caloriesLostSlow;
@@ -52,10 +53,11 @@ public class WorkoutCalc : MonoBehaviour
         }
         
         movement = MainCam.GetComponent<MoveThreshCheck>().moveString;
-        
+        liveText = movement;
         speed = 40 * MainCam.GetComponent<MoveThreshCheck>().zPos; //Zpos is forward distance in 0.025 secs, 0.025*40 = 1 second
+        totalDistance += MainCam.GetComponent<MoveThreshCheck>().zPos;
         squats = MainCam.GetComponent<MoveThreshCheck>().squatCount;
-        liveText = movement+"\nSpeed: " + speed.ToString("0.00") + "m/s\n";
+        
         if (prevMovement == movement){
             if (count == 0){
                 time = startTime;
@@ -69,11 +71,14 @@ public class WorkoutCalc : MonoBehaviour
                 CheckRecordAmount(movement, speed);
                 CheckRecordDistance(movement, distance);
                 distance += MainCam.GetComponent<MoveThreshCheck>().zPos;
+                liveText = movement + "\nSpeed: " + speed.ToString("0.00") + "m/s\n";
                 liveText += "Distance: "+distance+"\n";
+            }else{
+                distance = 0.0f;
             }
             if(movement == "Squats"){
                 CheckRecordAmount(movement, squats);
-                liveText += squats + "\n";
+                liveText += "\n"+squats + "\n";
             }
             CheckRecordDistance(movement, time);
 
@@ -140,18 +145,19 @@ public class WorkoutCalc : MonoBehaviour
                 isTimeRecord = true;
                 globObj.GetComponent<GlobalControl>().squatRecord = time;
             }
-        }else if(activity == "Walking"){
-            if(time > globObj.GetComponent<GlobalControl>().walkRecord){
-                isTimeRecord = true;
-                globObj.GetComponent<GlobalControl>().walkRecord = time;
-            }
         }
-        else if(activity == "Standing Still"){
-            if(time > globObj.GetComponent<GlobalControl>().stillRecord){
-                isTimeRecord = true;
-                globObj.GetComponent<GlobalControl>().stillRecord = time;
-            }
-        }
+        //else if(activity == "Walking"){
+        //    if(time > globObj.GetComponent<GlobalControl>().walkRecord){
+        //        isTimeRecord = true;
+        //        globObj.GetComponent<GlobalControl>().walkRecord = time;
+        //    }
+        //}
+        //else if(activity == "Standing Still"){
+        //    if(time > globObj.GetComponent<GlobalControl>().stillRecord){
+        //        isTimeRecord = true;
+        //        globObj.GetComponent<GlobalControl>().stillRecord = time;
+        //    }
+        //}
     }
     public void CheckRecordAmount(string activity, float value){
         GameObject globObj = GameObject.Find("GlobalObj");
