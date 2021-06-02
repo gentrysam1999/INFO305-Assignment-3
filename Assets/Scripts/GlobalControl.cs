@@ -42,6 +42,7 @@ public class GlobalControl : MonoBehaviour
         statsObj.SetActive(false);
         openWorkout.SetActive(false);
         schedWorkout.SetActive(false);
+        recordsObj.SetActive(false);
         
     }
     public void saveApp(){
@@ -111,6 +112,9 @@ public class GlobalControl : MonoBehaviour
     }
     public void openHome(){
         homeObj.SetActive(true);
+        menuObj.SetActive(true);
+        openWorkout.SetActive(false);
+        schedWorkout.SetActive(false);
         navObj.SetActive(false);
         recordsObj.SetActive(false);
         openWorkout.GetComponent<WorkoutCalc>().totalTime = 0.0f;
@@ -129,11 +133,13 @@ public class GlobalControl : MonoBehaviour
         //GameObject settingsObj = GameObject.Find("SetValues");
         menuObj.SetActive(false);
         recordsObj.SetActive(true);
-        recordsText.GetComponent<TextMesh>().text = "Records ";
-        recordsText.GetComponent<TextMesh>().text += "\nRun Time Record: " + runRecord;
-        recordsText.GetComponent<TextMesh>().text += "\nRun Speed Record: " + runSpeedRecord;
-        recordsText.GetComponent<TextMesh>().text += "\nRun Distance Record: " + runDistanceRecord;
-        recordsText.GetComponent<TextMesh>().text += "\nSquat Time Record: " + runRecord;
+        recordsText.GetComponent<TextMesh>().text = "Run Time Record: " + runRecord.ToString("0.00") + "secs";
+        recordsText.GetComponent<TextMesh>().text += "\nRun Speed Record: " + runSpeedRecord.ToString("0.00") + "m/s";
+        recordsText.GetComponent<TextMesh>().text += "\nRun Distance Record: " + runDistanceRecord.ToString("0.00") + "meters";
+        recordsText.GetComponent<TextMesh>().text += "\nSquat Time Record: " + squatRecord.ToString("0.00") + "secs";
+        recordsText.GetComponent<TextMesh>().text += "\nSquat Max Record: " + squatMaxRecord.ToString("0");
+        recordsText.GetComponent<TextMesh>().text += "\nWalk Time Record: " + walkRecord.ToString("0.00") + "secs";
+        recordsText.GetComponent<TextMesh>().text += "\nStill Time Record: " + stillRecord.ToString("0.00") + "secs";
     }
 
     public void startOpenWorkout(){
