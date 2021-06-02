@@ -26,6 +26,8 @@ public class GlobalControl : MonoBehaviour
     public GameObject statsObj;
     public GameObject openWorkout;
     public GameObject schedWorkout;
+    public GameObject stopButton;
+    public GameObject startButton;
   
     void Awake(){
         loadApp();
@@ -118,11 +120,15 @@ public class GlobalControl : MonoBehaviour
         homeObj.SetActive(false);
         openWorkout.SetActive(true);
         navObj.SetActive(true);
+        stopButton.SetActive(true);
+        startButton.SetActive(false);
     }
     public void stopOpenWorkout(){
         //just temp for now
         openWorkout.SetActive(false);
         schedWorkout.SetActive(false);
+        stopButton.SetActive(false);
+        startButton.SetActive(true);
     }
     public void startSchedWorkout(){
         schedWorkout.GetComponent<WorkoutCalc>().height = height;
