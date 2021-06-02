@@ -10,6 +10,7 @@ public class WorkoutCalc : MonoBehaviour
     public int height = 172;
     private float startTime = 0.0f;
     public float time;
+    public float totalTime;
     private int count = 0;
     public string movement;
     public float speed;
@@ -22,6 +23,9 @@ public class WorkoutCalc : MonoBehaviour
     public bool isTimeRecord = false;
     public bool isAmountRecord = false;
     public bool isDistanceRecord = false;
+    public GameObject timeText;
+    public GameObject calorieText;
+    public GameObject workoutTimeText;
 
    
 
@@ -30,11 +34,18 @@ public class WorkoutCalc : MonoBehaviour
     void Start()
     {
         prevMovement = MainCam.GetComponent<MoveThreshCheck>().moveString;
+        totalTime = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(this.gameObject.activeSelf){
+            totalTime += Time.deltaTime;
+        }else{
+            totalTime = 0.0f;
+        }
+        
         movement = MainCam.GetComponent<MoveThreshCheck>().moveString;
         speed = 40 * MainCam.GetComponent<MoveThreshCheck>().zPos; //Zpos is forward distance in 0.025 secs, 0.025*40 = 1 second
         squats = MainCam.GetComponent<MoveThreshCheck>().squatCount;
@@ -96,7 +107,9 @@ public class WorkoutCalc : MonoBehaviour
             
             //Debug.Log(recordTime(time));
         }
-        
+        timeText.GetComponent<TextMesh>().text = totalTime.ToString("0.000");
+        calorieText.GetComponent<TextMesh>().text = caloriesLost.ToString("0.00");
+        workoutTimeText.GetComponent<TextMesh>().text = time.ToString("0.000");
         prevMovement = movement;
         
     }

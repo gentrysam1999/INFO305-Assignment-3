@@ -295,6 +295,7 @@ MonoBehaviour:
   weight: 60
   height: 172
   time: 0
+  totalTime: 0
   movement: 
   speed: 0
   squats: 0
@@ -305,6 +306,9 @@ MonoBehaviour:
   isTimeRecord: 0
   isAmountRecord: 0
   isDistanceRecord: 0
+  timeText: {fileID: 1360686517}
+  calorieText: {fileID: 0}
+  workoutTimeText: {fileID: 1653831772}
 --- !u!1001 &195567226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -494,6 +498,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &309469366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013198843976, guid: 2d145caa42b44bd42aac79a42eba3d7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1090507797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &377771720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -625,6 +635,7 @@ MonoBehaviour:
   weight: 60
   height: 172
   time: 0
+  totalTime: 0
   movement: 
   speed: 0
   squats: 0
@@ -635,6 +646,9 @@ MonoBehaviour:
   isTimeRecord: 0
   isAmountRecord: 0
   isDistanceRecord: 0
+  timeText: {fileID: 1360686517}
+  calorieText: {fileID: 309469366}
+  workoutTimeText: {fileID: 1653831772}
 --- !u!1 &487626069
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +714,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d8c6bb9c868a9246abea5b9462b401f, type: 2}
+  - {fileID: 2100000, guid: 0530d90ba2a117e4f95c7a6345e8bb14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1572,7 +1586,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d8c6bb9c868a9246abea5b9462b401f, type: 2}
+  - {fileID: 2100000, guid: 0530d90ba2a117e4f95c7a6345e8bb14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2081,6 +2095,36 @@ PrefabInstance:
       propertyPath: voiceRequiresFocus
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114818926546564510, guid: 02c524b22137b5449904f5395141cc73,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818926546564510, guid: 02c524b22137b5449904f5395141cc73,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818926546564510, guid: 02c524b22137b5449904f5395141cc73,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1826345058}
+    - target: {fileID: 114818926546564510, guid: 02c524b22137b5449904f5395141cc73,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818926546564510, guid: 02c524b22137b5449904f5395141cc73,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: openStats
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818926546564510, guid: 02c524b22137b5449904f5395141cc73,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02c524b22137b5449904f5395141cc73, type: 3}
 --- !u!1 &1332500090
@@ -2148,7 +2192,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d8c6bb9c868a9246abea5b9462b401f, type: 2}
+  - {fileID: 2100000, guid: 0530d90ba2a117e4f95c7a6345e8bb14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2353,6 +2397,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1360686517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013198843976, guid: 2d145caa42b44bd42aac79a42eba3d7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 377771720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1398361662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2682,6 +2732,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d145caa42b44bd42aac79a42eba3d7c, type: 3}
+--- !u!1 &1653831772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013198843976, guid: 2d145caa42b44bd42aac79a42eba3d7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 926751183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1674680460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2857,6 +2913,7 @@ MonoBehaviour:
   menuObj: {fileID: 1176072355}
   homeObj: {fileID: 1354990016}
   navObj: {fileID: 233847565}
+  statsObj: {fileID: 1147334612}
   openWorkout: {fileID: 419952674}
   schedWorkout: {fileID: 192171483}
 --- !u!4 &1826345059

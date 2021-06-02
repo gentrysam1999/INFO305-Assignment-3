@@ -23,6 +23,7 @@ public class GlobalControl : MonoBehaviour
     public GameObject menuObj;
     public GameObject homeObj;
     public GameObject navObj;
+    public GameObject statsObj;
     public GameObject openWorkout;
     public GameObject schedWorkout;
   
@@ -33,8 +34,10 @@ public class GlobalControl : MonoBehaviour
         settingsObj.SetActive(true);
         menuObj.SetActive(false);
         navObj.SetActive(false);
+        statsObj.SetActive(false);
         openWorkout.SetActive(false);
         schedWorkout.SetActive(false);
+        
     }
     public void saveApp(){
         string destination = Application.persistentDataPath + "/save.dat";
@@ -100,6 +103,13 @@ public class GlobalControl : MonoBehaviour
     public void openHome(){
         homeObj.SetActive(true);
         navObj.SetActive(false);
+    }
+    public void openStats(){
+        if(statsObj.activeSelf){
+            statsObj.SetActive(false);
+        }else{
+            statsObj.SetActive(true);
+        }
     }
 
     public void startOpenWorkout(){
