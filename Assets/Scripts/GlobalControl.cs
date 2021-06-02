@@ -21,6 +21,7 @@ public class GlobalControl : MonoBehaviour
     public float time;
     public GameObject settingsObj;
     public GameObject menuObj;
+    public GameObject recordsObj;
     public GameObject homeObj;
     public GameObject navObj;
     public GameObject statsObj;
@@ -28,9 +29,10 @@ public class GlobalControl : MonoBehaviour
     public GameObject schedWorkout;
     public GameObject stopButton;
     public GameObject startButton;
+    public GameObject recordsText;
   
     void Awake(){
-        saveApp();
+        //saveApp();
         loadApp();
 
         homeObj.SetActive(true);
@@ -110,6 +112,10 @@ public class GlobalControl : MonoBehaviour
     public void openHome(){
         homeObj.SetActive(true);
         navObj.SetActive(false);
+        recordsObj.SetActive(false);
+        openWorkout.GetComponent<WorkoutCalc>().totalTime = 0.0f;
+        openWorkout.GetComponent<WorkoutCalc>().caloriesLost = 0.0f;
+        openWorkout.GetComponent<WorkoutCalc>().distance = 0.0f;
     }
     public void openStats(){
         if(statsObj.activeSelf){
@@ -117,6 +123,17 @@ public class GlobalControl : MonoBehaviour
         }else{
             statsObj.SetActive(true);
         }
+    }
+    public void openRecords()
+    {
+        //GameObject settingsObj = GameObject.Find("SetValues");
+        menuObj.SetActive(false);
+        recordsObj.SetActive(true);
+        recordsText.GetComponent<TextMesh>().text = "Records ";
+        recordsText.GetComponent<TextMesh>().text += "\nRun Time Record: " + runRecord;
+        recordsText.GetComponent<TextMesh>().text += "\nRun Speed Record: " + runSpeedRecord;
+        recordsText.GetComponent<TextMesh>().text += "\nRun Distance Record: " + runDistanceRecord;
+        recordsText.GetComponent<TextMesh>().text += "\nSquat Time Record: " + runRecord;
     }
 
     public void startOpenWorkout(){
