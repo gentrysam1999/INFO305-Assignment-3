@@ -7,12 +7,12 @@ using UnityEngine;
 public class GlobalControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int height = 172;
-    public int weight = 60;
-    public float runRecord = 39.1276538f;
+    public int height = 175;
+    public int weight = 75;
+    public float runRecord = 10.0f;
     public float runSpeedRecord = 0.0f; // meters per second
     public float runDistanceRecord = 0.0f; // meters
-    public float squatRecord = 30.0f;
+    public float squatRecord = 0.0f;
     public float squatMaxRecord = 0.0f; // amount of squats
     public float walkRecord = 10.0f;
     public float stillRecord = 10.0f;
@@ -30,6 +30,7 @@ public class GlobalControl : MonoBehaviour
     public GameObject startButton;
   
     void Awake(){
+        saveApp();
         loadApp();
 
         homeObj.SetActive(true);
@@ -68,9 +69,13 @@ public class GlobalControl : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         GameData data = (GameData) bf.Deserialize(file);
         file.Close();
-
-        height = data.height;
-        weight = data.weight;
+        if (height > 10){
+            height = data.height;
+        }
+        if (weight > 10)
+        {
+            weight = data.weight;
+        }
         runRecord = data.runRecord;
         runSpeedRecord = data.runSpeedRecord;
         runDistanceRecord = data.runDistanceRecord;
