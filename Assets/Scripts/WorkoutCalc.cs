@@ -72,7 +72,7 @@ public class WorkoutCalc : MonoBehaviour
                 CheckRecordDistance(movement, distance);
                 distance += MainCam.GetComponent<MoveThreshCheck>().zPos;
                 liveText = movement + "\nSpeed: " + speed.ToString("0.00") + "m/s\n";
-                liveText += "Distance: "+distance+"\n";
+                liveText += "Distance: "+distance.ToString("0.00")+"metres\n";
             }else{
                 distance = 0.0f;
             }

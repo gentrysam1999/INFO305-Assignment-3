@@ -14,10 +14,10 @@ public class GlobalControl : MonoBehaviour
     public float runDistanceRecord = 0.0f; // meters
     public float squatRecord = 0.0f;
     public float squatMaxRecord = 0.0f; // amount of squats
-    public float walkRecord = 10.0f;
-    public float stillRecord = 10.0f;
-    public string gender;
-    public int age;
+    public float walkRecord = 10.0f; // not using atm
+    public float stillRecord = 10.0f; // not using atm
+    public string gender; // not using atm
+    public int age; // not using atm
     public float time;
     public GameObject settingsObj;
     public GameObject menuObj;
@@ -124,7 +124,7 @@ public class GlobalControl : MonoBehaviour
         recordsObj.SetActive(false);
         summaryText.GetComponent<TextMesh>().text = "Total Calories Lost = " + openWorkout.GetComponent<WorkoutCalc>().caloriesLost.ToString("0.00") + " (kcal)";
         summaryText.GetComponent<TextMesh>().text += "\nTotal Workout Time = " + (openWorkout.GetComponent<WorkoutCalc>().totalTime/60).ToString("0.00") + " (minutes)";
-        summaryText.GetComponent<TextMesh>().text += "\nTotal Distance Travelled = " + openWorkout.GetComponent<WorkoutCalc>().totalDistance.ToString("0.00")+ " (meters)";
+        summaryText.GetComponent<TextMesh>().text += "\nTotal Distance Travelled = " + openWorkout.GetComponent<WorkoutCalc>().totalDistance.ToString("0.00")+ " (metres)";
     }
     public void openHome(){
         homeObj.SetActive(true);
