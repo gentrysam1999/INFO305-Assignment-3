@@ -74,17 +74,17 @@ public class WorkoutCalc : MonoBehaviour
             if(isTimeRecord){
                 //Do something to let user know that they are achieving a new record e.g. "Keep Going"
                 Debug.Log("new time record!");
-                headsetText += ("New " + prevMovement + " Time Keep Going!/n");
+                headsetText += ("New " + prevMovement + " Time Keep Going!\n");
             }
             if(isAmountRecord){
                 //Do something to let user know that they are achieving a new record e.g. "Keep Going"
                 Debug.Log("new amount record!");
-                headsetText += ("New " + prevMovement + " Max Keep Going!/n");
+                headsetText += ("New " + prevMovement + " Max Keep Going!\n");
             }
             if(isDistanceRecord){
                 //Do something to let user know that they are achieving a new record e.g. "Keep Going"
                 Debug.Log("new distance record!");
-                headsetText += ("New " + prevMovement + " Distance Keep Going!/n");
+                headsetText += ("New " + prevMovement + " Distance Keep Going!\n");
             }
         }else{
             caloriesLostSlow += calorieCalc(prevMovement, weight, time);
